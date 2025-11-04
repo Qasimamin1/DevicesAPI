@@ -1,4 +1,5 @@
 using DevicesApi.Data;
+using DevicesApi.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<DevicesDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//// Register your device service
-//builder.Services.AddScoped<IDeviceService, DeviceService>();
+// Register your device service
+builder.Services.AddScoped<IDeviceService, DeviceService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
